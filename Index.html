@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary ❤️</title>
+
+<!-- =======================
+     GLOBAL RESET & BASICS
+======================= -->
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* =======================
+     BACKGROUND AMBIENCE
+======================= */
+#bg-gradient {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 90, 150, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 60, 100, 0.12), transparent 45%);
+  z-index: -2;
+}
+
+#noise {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.04;
+  z-index: -1;
+}
+
+/* =======================
+     PAGE SYSTEM
+======================= */
+.page {
+  display: none;
+  height: 100vh;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================
+     TYPOGRAPHY
+======================= */
+h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #ff6aa2, #ff3d71);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 18px;
+  color: #cfcfcf;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto 24px;
+}
+
+/* =======================
+     BUTTONS
+======================= */
+button {
+  align-self: center;
+  margin-top: 24px;
+  padding: 14px 36px;
+  font-size: 16px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #ff3d71, #ff6aa2);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 80, 120, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.96);
+  box-shadow: 0 6px 18px rgba(255, 80, 120, 0.35);
+}
+
+/* =======================
+     IMAGE STYLES
+======================= */
+img.hero {
+  width: 220px;
+  height: auto;
+  border-radius: 20px;
+  margin: 0 auto 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* =======================
+     HEART FLOAT ANIMATION
+======================= */
+.heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  to {
+    transform: translateY(-120vh) translateX(40px);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="bg-gradient"></div>
+<div id="noise"></div>
+
+<!-- =======================
+     PAGE 1 — INTRO
+======================= -->
+<section class="page active">
+  <h1>Happy Anniversary ❤️</h1>
+  <p>
+    This isn’t a message.<br>
+    It’s something slower.<br>
+    Something meant to be felt.
+  </p>
+  <button onclick="nextPage()">Begin</button>
+</section>
+
+<!-- =======================
+     PAGE 2 — MEMORY
+======================= -->
+<section class="page">
+  <img class="hero"
+    src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+  <p>
+    It started quietly.<br>
+    No grand plan.<br>
+    Just a feeling that stayed.
+  </p>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- =======================
+     PAGE 3 — CONNECTION
+======================= -->
+<section class="page">
+  <h2>You & Me</h2>
+  <p>
+    Not perfect.<br>
+    Not effortless.<br>
+    But honest. And real.
+  </p>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- =======================
+     PAGE 4 — TIME
+======================= -->
+<section class="page">
+  <p>
+    Time passed.<br>
+    Seasons changed.<br>
+    And somehow, we kept choosing.
+  </p>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- =======================
+     PAGE 5 — COMMITMENT
+======================= -->
+<section class="page">
+  <h2>Another Year</h2>
+  <p>
+    Another year of us.<br>
+    Still choosing you.<br>
+    Always.
+  </p>
+  <button onclick="nextPage()">One Last Thing</button>
+</section>
+
+<!-- =======================
+     PAGE 6 — FINAL
+======================= -->
+<section class="page">
+  <h1>I Love You 💖</h1>
+  <p>
+    Happy Anniversary.<br>
+    And here’s to every page<br>
+    we haven’t written yet.
+  </p>
+</section>
+
+<!-- =======================
+     SCRIPT
+======================= -->
+<script>
+const pages = document.querySelectorAll(".page");
+let index = 0;
+
+function nextPage() {
+  if (index < pages.length - 1) {
+    pages[index].classList.remove("active");
+    index++;
+    pages[index].classList.add("active");
+  }
+}
+
+/* floating hearts */
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(spawnHeart, 900);
+</script>
+
+</body>
+  </html>
